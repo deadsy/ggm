@@ -72,8 +72,8 @@ def get_files(dlist, fo_flist, fo_dlist):
 
 # *.c and *.h files in these directories will be auto-formatted.
 src_dirs = (
-	('lib', fmt_zephyr),
-	('target', fmt_zephyr),
+	('src/ggm', fmt_zephyr),
+	('src/test', fmt_zephyr),
 )
 
 # don't format directories in this list

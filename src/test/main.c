@@ -11,8 +11,10 @@
 #include <jack/jack.h>
 #include <jack/midiport.h>
 
+#include "log.h"
+
 #include "ggm.h"
-#include "module.h"
+// #include "module.h"
 
 /******************************************************************************
  * jack data
@@ -413,7 +415,7 @@ int main(void)
 
 	log_set_prefix("ggm/src/");
 
-	LOG_INF("GooGooMuck %s (%s)", GGM_VERSION, CONFIG_BOARD);
+	LOG_INF("GooGooMuck %s", GGM_VERSION);
 
 	struct synth *s = synth_new();
 	if (s == NULL) {

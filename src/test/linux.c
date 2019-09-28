@@ -41,7 +41,7 @@ void *ggm_calloc(size_t num, size_t size)
 
 void ggm_free(void *ptr)
 {
-	return free(ptr);
+	free(ptr);
 }
 
 /*****************************************************************************/

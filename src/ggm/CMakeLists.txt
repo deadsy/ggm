@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.13.1)
 
-project(libggm)
+project(libggm VERSION 0.1 LANGUAGES C)
 
 add_library(ggm STATIC
 		core/block.c
@@ -34,7 +34,7 @@ add_library(ggm STATIC
 		module/voice/osc.c
 )
 
-target_include_directories(ggm PRIVATE
+target_include_directories(ggm PUBLIC
     inc
     module
 )
