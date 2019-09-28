@@ -132,7 +132,7 @@ static void poly_port_midi(struct module *m, const struct event *e)
 	}
 
 	char tmp[64];
-	LOG_DBG("%s", log_strdup(midi_str(tmp, sizeof(tmp), e)));
+	LOG_DBG("%s", midi_str(tmp, sizeof(tmp), e));
 	/* forward the MIDI events */
 	event_in(this->poly, "midi", e, NULL);
 }

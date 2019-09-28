@@ -42,7 +42,7 @@ struct module_info {
 
 typedef struct module * (*module_func)(struct module *m, int id);
 
-#define MODULE_REGISTER(x)
+#define MODULE_REGISTER(x) void dummy_for_now(void)
 
 /******************************************************************************
  * function prototypes
