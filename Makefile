@@ -1,10 +1,18 @@
+BUILD = build
 
+.PHONY: all
+all: .stamp_cmake build
 
-all:
-	-rm -rf build
-	mkdir build
-	cmake -S src -B build
-	make -C build
+.PHONY: build
+build: .stamp_cmake
+	ninja -C $(BUILD)
 
+.PHONY: clean
 clean:
-	-rm -rf build
+	-rm -rf $(BUILD)
+	-rm -rf .stamp*
+
+.stamp_cmake:
+	-rm -rf $(BUILD)
+	cmake -GNinja -S src -B $(BUILD)
+	touch $@
