@@ -12,9 +12,7 @@
 #include <jack/midiport.h>
 
 #include "log.h"
-
 #include "ggm.h"
-// #include "module.h"
 
 /******************************************************************************
  * jack data
@@ -413,7 +411,7 @@ int main(void)
 	struct jack *j = NULL;
 	int err;
 
-	log_set_prefix("ggm/src/");
+	log_set_prefix("/home/jasonh/work/ggm/src/");
 
 	LOG_INF("GooGooMuck %s", GGM_VERSION);
 

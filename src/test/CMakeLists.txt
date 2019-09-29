@@ -7,12 +7,19 @@ add_executable(ggm_test
 )
 
 target_link_libraries(ggm_test
-  ggm)
+  ggm
+  jack
+)
 
 target_compile_options(ggm_test PRIVATE
-	-Wall
+  -Wall
   -Wextra
   -Wstrict-prototypes
   -Wno-unused-parameter
   -Werror
 )
+
+target_compile_definitions(ggm_test PRIVATE
+  LOG_USE_COLOR
+)
+

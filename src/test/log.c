@@ -109,7 +109,7 @@ static const char *log_strip_prefix(const char *prefix, const char *s)
 	return s;
 }
 
-void log_log(int level, const char *file, const char *func, int line, const char *fmt, ...)
+void log_log(int level, const char *file, const char *func, int line, const char *fmt, va_list args)
 {
 	if (level < L.level) {
 		return;
@@ -129,7 +129,6 @@ void log_log(int level, const char *file, const char *func, int line, const char
 
 	/* Log to stderr */
 	if (!L.quiet) {
-		va_list args;
 		char buf[16];
 		buf[strftime(buf, sizeof(buf), "%H:%M:%S", lt)] = '\0';
 #ifdef LOG_USE_COLOR
@@ -139,22 +138,17 @@ void log_log(int level, const char *file, const char *func, int line, const char
 #else
 		fprintf(stderr, "%s %-5s %s:%s(%d) ", buf, level_names[level], file, func, line);
 #endif
-		va_start(args, fmt);
 		vfprintf(stderr, fmt, args);
-		va_end(args);
 		fprintf(stderr, "\n");
 		fflush(stderr);
 	}
 
 	/* Log to file */
 	if (L.fp) {
-		va_list args;
 		char buf[32];
 		buf[strftime(buf, sizeof(buf), "%Y-%m-%d %H:%M:%S", lt)] = '\0';
 		fprintf(L.fp, "%s %-5s %s:%s(%d) ", buf, level_names[level], file, func, line);
-		va_start(args, fmt);
 		vfprintf(L.fp, fmt, args);
-		va_end(args);
 		fprintf(L.fp, "\n");
 		fflush(L.fp);
 	}
